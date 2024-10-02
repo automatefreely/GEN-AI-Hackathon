@@ -17,6 +17,7 @@ import Link from "next/link"
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import YouTubePreviewDialog from '@/components/YouTubePreviewDialog';
+import YoutubeGenerator from '@/components/YoutubeVideoGenn';
 
 
 const Learn = ({subject, learningMethod}) => {
@@ -260,11 +261,11 @@ const Learn = ({subject, learningMethod}) => {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
     <Header/>
-      <main className="flex-1 py-12 px-8">
-        <div className="container mx-auto grid gap-6 lg:grid-cols-2">
+      <main className="flex-1 py-8 px-4">
+        <div className="container mx-auto grid gap-2 grid-cols-[20%,80%]">
           <Card className="w-full overflow-hidden">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-bold mb-4">AI Visual Learning</h2>
+              <h2 className="text-2xl font-bold mb-4">Chatbot RAG</h2>
               <div
                 ref={chatContainerRef}
                 className="h-[400px] overflow-y-auto border rounded-lg p-4 space-y-4 bg-white dark:bg-gray-900 mb-4"
@@ -347,6 +348,9 @@ const Learn = ({subject, learningMethod}) => {
 </div>
 
             </CardContent>
+          </Card>
+          <Card className="w-full overflow-hidden">
+                <YoutubeGenerator/>
           </Card>
         
         
