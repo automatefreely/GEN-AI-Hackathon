@@ -15,9 +15,6 @@ import { Brain, Send, PlayCircle, PauseCircle, User, Mic, Volume2, VolumeX ,Book
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from "next/link"
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import YouTubePreviewDialog from '@/components/YouTubePreviewDialog';
-
 
 const Learn = ({subject, learningMethod}) => {
   const [messages, setMessages] = useState([
@@ -155,29 +152,6 @@ const Learn = ({subject, learningMethod}) => {
     } else {
       recognitionRef.current.start();
       setIsListening(true);
-    }
-  };
-
-  const speakResponse = (text, messageIndex) => {
-    if (synthRef.current && !isMuted) {
-      synthRef.current.cancel(); // Stop any ongoing speech
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => {
-        setIsSpeaking(false);
-        // setHighlightedText('');
-        setHighlightIndex(0);
-      };
-      utterance.onboundary = (event) => {
-        const word = text.substring(event.charIndex, event.charIndex + event.charLength);
-        setMessages(prevMessages =>
-          prevMessages.map((msg, index) =>
-            index === messageIndex ? { ...msg, highlightedText: msg.highlightedText + word + " " } : msg
-          )
-        );
-        setHighlightIndex(prevIndex => prevIndex + 1);
-      };
-      synthRef.current.speak(utterance);
     }
   };
 
@@ -348,15 +322,60 @@ const Learn = ({subject, learningMethod}) => {
 
             </CardContent>
           </Card>
-        
+
+
+
+
+
+          <Card className="w-full overflow-hidden">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-bold mb-4">Visual Aid</h2>
+              {videoUrl ? (
+                <div className="relative aspect-video mb-4">
+                  <iframe
+                    ref={videoRef}
+                    className="w-full h-full"
+                    src={videoUrl}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                  <Button
+                    onClick={toggleVideo}
+                    className="absolute bottom-4 right-4 rounded-full w-10 h-10 p-2"
+                  >
+                    {!isPlaying ? <PauseCircle className="h-4 w-4" /> : <PlayCircle className="h-4 w-4" />}
+                  </Button>
+                </div>
+              ) : (
+                <div className="aspect-video bg-gray-200 dark:bg-gray-700 flex items-center justify-center mb-4">
+                  <p className="text-gray-500 dark:text-gray-400">No video available yet</p>
+                </div>
+              )}
+              <div className="space-y-2">
+                <h3 className="font-semibold">Confusion Level</h3>
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                  <div
+                    className="bg-blue-600 h-2.5 rounded-full"
+                    style={{ width: `${confusionLevel * 100}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {confusionLevel < 0.3
+                    ? "You seem to be understanding well!"
+                    : confusionLevel < 0.7
+                      ? "You're making progress, but there might be some unclear points."
+                      : "It looks like you might be struggling. Let's break this down further or watch a video to help clarify."}
+                </p>
+              </div>
+         
+
+            </CardContent>
+          </Card>
         
         </div>
       </main>
-
-      <YouTubePreviewDialog/>
-     
-     
-     
       <Dialog open={isQuestionModalOpen} onOpenChange={setIsQuestionModalOpen}>
         <DialogContent>
           <DialogHeader>
@@ -399,7 +418,21 @@ const Learn = ({subject, learningMethod}) => {
           )}
         </DialogContent>
       </Dialog>
-   <Footer/>
+      <footer
+        className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-white dark:bg-gray-800">
+        <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 AI Tutor. All rights reserved.</p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
+            Terms of Service
+          </Link>
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
+            Privacy Policy
+          </Link>
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
+            Cookie Policy
+          </Link>
+        </nav>
+      </footer>
     </div >
   );
 };
