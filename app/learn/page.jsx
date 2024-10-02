@@ -261,7 +261,7 @@ const Learn = ({subject, learningMethod}) => {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
     <Header/>
-      <main className="flex-1 py-8 px-4">
+      <main className="flex-1 py-4 px-4">
         <div className="container mx-auto grid gap-2 grid-cols-[20%,80%]">
           <Card className="w-full overflow-hidden">
             <CardContent className="p-6">
@@ -322,13 +322,17 @@ const Learn = ({subject, learningMethod}) => {
               </div>  
                 
               <div className="flex items-center space-x-2">
-  <Input
+  {/* <Input
     placeholder="Type your message here..."
     value={inputMessage}
     onChange={(e) => setInputMessage(e.target.value)}
     onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
     className="flex-1"
-  />
+  /> */}
+  <div className='flex flex-col gap-4 align-middle justify-center'>
+
+ 
+  <div className='flex gap-2'>
   <Button onClick={handleSendMessage} className="rounded-full w-10 h-10 p-2">
     <Send className="h-4 w-4" />
     <span className="sr-only">Send message</span>
@@ -341,10 +345,20 @@ const Learn = ({subject, learningMethod}) => {
     {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
     <span className="sr-only">{isMuted ? 'Unmute' : 'Mute'}</span>
   </Button>
+
+  </div>
+
+  <div className='flex'>
   <Button onClick={triggerQuestion} className="px-4 py-2 w-40 flex items-center justify-center space-x-2">
     <BookOpen className="h-4 w-4" />
     <span>Test Knowledge</span>
   </Button>
+
+  </div>
+
+  </div>
+  
+
 </div>
 
             </CardContent>
