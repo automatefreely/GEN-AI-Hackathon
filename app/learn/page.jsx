@@ -15,7 +15,7 @@ import { Brain, Send, PlayCircle, PauseCircle, User, Mic, Volume2, VolumeX } fro
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from "next/link"
 
-const AiLearningPage = () => {
+const Learn = ({subject, learningMethod}) => {
   const [messages, setMessages] = useState([
     { role: 'ai', content: "Hello! I'm your AI tutor. What would you like to learn today?", highlightedText: '' }
   ]);
@@ -495,4 +495,4 @@ const AiLearningPage = () => {
   );
 };
 
-export default AiLearningPage;
+export default Learn;

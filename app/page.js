@@ -1,9 +1,7 @@
-import Image from "next/image";
-
-import AiLearningPage from "../components/yt.jsx"
+import Dashboard from "./dashboard/page";
 
 export default function Home() {
   return (
-    <AiLearningPage/>
+      <Dashboard/>
   );
 }
