@@ -6,6 +6,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Brain } from 'lucide-react'
+import Link from 'next/link'
 
 // Initialize Firebase (replace with your config)
 const firebaseConfig = {
@@ -58,7 +59,7 @@ export function SignUpGoogle() {
           <h1 className="text-2xl font-bold text-gray-800">Join AI Learning Platform</h1>
           <p className="text-gray-600 mt-2">Sign up to start your AI learning journey</p>
         </div>
-
+        <Link href = "/home" >
         <button
           onClick={signInWithGoogle}
           disabled={loading}
@@ -83,6 +84,8 @@ export function SignUpGoogle() {
           </svg>
           {loading ? 'Signing up...' : 'Sign up with Google'}
         </button>
+        </Link>
+
 
         {error && (
           <p className="mt-4 text-red-500 text-center">{error}</p>

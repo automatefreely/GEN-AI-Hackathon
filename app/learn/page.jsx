@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useState, useEffect, useRef } from 'react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Brain, Send, PlayCircle, PauseCircle, User, Mic, Volume2, VolumeX ,BookOpen} from "lucide-react";
-import { motion, AnimatePresence } from 'framer-motion';
+} from "@/components/ui/dialog"
+import { Brain, Send, PlayCircle, PauseCircle, User, Mic, Volume2, VolumeX, BookOpen, Star } from "lucide-react"
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from "next/link"
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import YouTubePreviewDialog from '@/components/YouTubePreviewDialog';
-import YoutubeGenerator from '@/components/YoutubeVideoGenn';
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import YouTubePreviewDialog from '@/components/YouTubePreviewDialog'
+import YoutubeGenerator from '@/components/YoutubeVideoGenn'
 
 
 const Learn = ({subject, learningMethod}) => {
@@ -26,7 +26,6 @@ const Learn = ({subject, learningMethod}) => {
   ]);
 
   const [inputMessage, setInputMessage] = useState('');
-  const [selectedSubject, setSelectedSubject] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [videoUrl, setVideoUrl] = useState('https://www.youtube.com/embed/dQw4w9WgXcQ');
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,14 +33,13 @@ const Learn = ({subject, learningMethod}) => {
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [highlightedText, setHighlightedText] = useState('');
   const [highlightIndex, setHighlightIndex] = useState(0);
 
   const chatContainerRef = useRef(null);
   const videoRef = useRef(null);
   const recognitionRef = useRef(null);
   const synthRef = useRef(null);
-
+  var totalXP = 350;
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -118,7 +116,7 @@ const Learn = ({subject, learningMethod}) => {
     // This is a simplified AI response generation.
     // In a real application, this would involve calling an AI service.
     const responses = [
-      `That's an interesting question about ${selectedSubject}. Let's explore it further.`,
+      `That's an interesting question about ${subject}. Let's explore it further.`,
       `Great! I'll explain that concept in a way that combines text and visual learning.`,
       `To understand this better, let's break it down into smaller parts and use some video examples.`,
       `Here's an explanation, and I'll find a video that might help illustrate this concept.`,
@@ -260,7 +258,35 @@ const Learn = ({subject, learningMethod}) => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-    <Header/>
+     <header
+        className="px-4 lg:px-6 h-14 flex items-center border-b bg-white dark:bg-gray-800 shadow-sm">
+        <Link className="flex items-center justify-center" href="#">
+          <Brain className="h-6 w-6 text-primary" />
+          <span className="ml-2 text-lg font-bold">Instruct AI</span>
+        </Link>
+        <nav className="ml-auto flex items-center gap-4 sm:gap-6">
+          <div
+            className="flex items-center bg-primary text-white px-3 py-1 rounded-full text-sm">
+            <Star className="h-4 w-4 mr-1" />
+            <span>{totalXP} XP</span>
+          </div>
+          <Link
+            className="text-sm font-medium hover:text-primary transition-colors"
+            href="#">
+            Dashboard
+          </Link>
+          <Link
+            className="text-sm font-medium hover:text-primary transition-colors"
+            href="#">
+            Progress
+          </Link>
+          <Link
+            className="text-sm font-medium hover:text-primary transition-colors"
+            href="#">
+            Settings
+          </Link>
+        </nav>
+      </header>
       <main className="flex-1 py-4 px-4">
         <div className="container mx-auto grid gap-2 grid-cols-[20%,80%]">
           <Card className="w-full overflow-hidden">

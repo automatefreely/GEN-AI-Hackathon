@@ -14,7 +14,7 @@ import Footer from '@/components/Footer'
 
 // Demo content
 const demoContent = {
-  videoId: 'cH4mYC91omg',
+  videoId: 'E3jaFfP5BAg',
   title: "Machine Learning Basics",
   questions: [
     {

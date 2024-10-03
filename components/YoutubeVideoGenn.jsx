@@ -14,27 +14,34 @@ import Footer from '@/components/Footer'
 
 // Demo content
 const demoContent = {
-  videoId: 'cH4mYC91omg',
+  videoId: 'ukzFI9rgwfU',
   title: "Machine Learning Basics",
   questions: [
     {
-      timestamp: 30,
+      timestamp: 10,
       question: "What is the main topic of this video?",
       options: ['Cooking recipes', 'Web development', 'Machine learning'],
       correctAnswer: 'Machine learning'
     },
     {
-      timestamp: 60,
+      timestamp: 50,
       question: "What type of machine learning is discussed?",
       options: ['Supervised learning', 'Unsupervised learning', 'Reinforcement learning'],
       correctAnswer: 'Supervised learning'
     },
     {
-      timestamp: 120,
+      timestamp:400,
       question: "What is the goal of machine learning according to the video?",
       options: ['To replace human jobs', 'To make predictions based on data', 'To create artificial intelligence'],
       correctAnswer: 'To make predictions based on data'
-    }
+    },
+    {
+      timestamp: 100,
+      question: "What is the main topic of this video?",
+      options: ['Cooking recipes', 'Web development', 'Machine learning'],
+      correctAnswer: 'Machine learning'
+    },
+    
   ]
 }
 
