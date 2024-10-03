@@ -202,10 +202,10 @@ export function DashboardComponent() {
                         <SelectValue placeholder="Choose a subject" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="math">Mathematics</SelectItem>
-                        <SelectItem value="science">Science</SelectItem>
-                        <SelectItem value="history">History</SelectItem>
-                        <SelectItem value="literature">Literature</SelectItem>
+                        <SelectItem value="math">Artificial Intelligence</SelectItem>
+                        <SelectItem value="science">Machine Learning</SelectItem>
+                        <SelectItem value="history">BlockChain</SelectItem>
+                        <SelectItem value="literature">Cryptography</SelectItem>
                       </SelectContent>
                     </Select>
                     {showValidationError && !selectedSubject && (
