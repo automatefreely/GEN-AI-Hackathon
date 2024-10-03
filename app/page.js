@@ -1,14 +1,14 @@
-import Dashboard from "./dashboard/page";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+// import { SignInMethod } from 'firebase/auth'
+import React from 'react'
+import { SignUpGoogle } from '@/components/app-signup-page'
 
-export default function Home() {
+const page = () => {
   return (
-    // <Dashboard/>
-    <>
-      <Link href="/startLesson">
-        <Button>Start Learning</Button>
-      </Link>
-    </>
-  );
+    <div>
+        {/* <SignInMethod/> */}
+        <SignUpGoogle/>
+    </div>
+  )
 }
+
+export default page

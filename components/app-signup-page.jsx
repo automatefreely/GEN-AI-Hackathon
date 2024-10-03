@@ -38,8 +38,8 @@ export function SignUpGoogle() {
     setLoading(true)
     setError(null)
     try {
-      const provider = new GoogleAuthProvider()
-      await signInWithPopup(auth, provider)
+      // const provider = new GoogleAuthProvider()
+      // await signInWithPopup(auth, provider)
     } catch (err) {
       setError('Failed to sign in with Google. Please try again.')
       console.error(err)
@@ -92,10 +92,7 @@ export function SignUpGoogle() {
         )}
 
         <p className="mt-8 text-center text-sm text-gray-600">
-          Already have an account?{' '}
-          <a href="/login" className="text-primary hover:underline">
-            Log in
-          </a>
+          This is a Google sign-in Simulation. Your account will not be Taken.
         </p>
       </div>
     </div>)
